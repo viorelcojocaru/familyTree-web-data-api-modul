@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns="http://www.w3.org/1999/html">
+<body>
+<div th:fragment="welcome">
+    <div class="row">
+        <div class="col-md-3">
+            <h3 th:utext="#{welcome.header}"></h3>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>
+                        <span th:text="${person.firstName}"></span>
+                        <span th:text="${person.lastName}"></span>
+                    </h4>
+
+                </div>
+                <div class=" col-md-4">
+                    <p sec:authorize="isAuthenticated()">
+                        <a th:href="@{/logout}">Logout</a>
+                    </p>
+                    <!--<form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Sign Out"/>
+                    </form>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

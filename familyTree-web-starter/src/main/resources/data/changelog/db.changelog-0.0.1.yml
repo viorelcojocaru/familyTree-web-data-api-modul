@@ -1,0 +1,44 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180925100000
+    author: familyTree
+    comment: create table person first time
+    changes:
+    - createTable:
+        tableName: person
+        columns:
+        - column:
+            name: id
+            type: BIGSERIAL
+            constraints:
+            - primaryKeyName: person_id_pk
+            - primaryKey: true
+            - nullable: false
+        - column:
+            name: first_name
+            type: varchar(50)
+            constraints:
+              nullable: false
+        - column:
+            name: last_name
+            type: varchar(50)
+        - column:
+            name: last_name_on_birth
+            type: varchar(50)
+        - column:
+            name: birth_date
+            type: date
+        - column:
+            name: in_alive
+            type: boolean
+            defaultValueBoolean: true
+        - column:
+            name: death_date
+            type: date
+        - column:
+            name: photo_path
+            type: varchar(50)
+        - column:
+            name: gender
+            type: int
+

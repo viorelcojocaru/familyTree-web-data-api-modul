@@ -1,0 +1,10 @@
+databaseChangeLog:
+- changeSet:
+    id: 2018101814700
+    author: viorelgggg
+    changes:
+        - renameTable:
+            catalogName: familyTree
+            newTableName: user_to_person
+            oldTableName: person_to_user
+            schemaName: public

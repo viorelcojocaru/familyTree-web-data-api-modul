@@ -1,0 +1,20 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180927094000
+    author: familytree
+    comment: create Table app Acount type
+    changes:
+    - createTable:
+        tableName: app_account_type
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: (10)
+            constraints:
+            - primaryKeyName: app_account_type_id_pk
+            - primaryKey: true
+            - nullable: false
+        - column:
+            name: name
+            type: varchar(50)

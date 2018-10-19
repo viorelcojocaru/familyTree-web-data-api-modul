@@ -1,0 +1,13 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180927104500
+    author: familytree
+    comment: addUniqueConstraint- id, from_app_account_id, to_app_account_id
+    changes:
+    - addUniqueConstraint:
+        columnNames: id, from_app_account_id, to_app_account_id
+        constraintName: const_app_account_id_to_app_account_id
+        deferrable: true
+        schemaName: public
+        tableName: relation
+

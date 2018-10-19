@@ -1,0 +1,43 @@
+databaseChangeLog:
+- changeSet:
+      id: 20180927095500
+      author: familytree
+      comment: addForeignKeyConstraint person_id
+      changes:
+      - addForeignKeyConstraint:
+            baseColumnNames: person_id
+            baseTableName: app_account
+            constraintName: fk_app_account_person
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: person
+- changeSet:
+      id: 20180927100600
+      author: familytree
+      comment: addForeignKeyConstraint type_id
+      changes:
+      - addForeignKeyConstraint:
+            baseColumnNames: type_id
+            baseTableName: app_account
+            constraintName: fk_app_account_app_account_type
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: app_account_type
+
+- changeSet:
+      id: 20180927101000
+      author: familytree
+      comment: addUniqueConstraint- id, person_id
+      changes:
+      - addUniqueConstraint:
+            columnNames: id, person_id
+            constraintName: const_app-account_id_person_id
+            deferrable: true
+            schemaName: public
+            tableName: app_account

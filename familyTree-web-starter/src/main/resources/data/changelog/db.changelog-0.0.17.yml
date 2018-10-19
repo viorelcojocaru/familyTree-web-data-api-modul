@@ -1,0 +1,71 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180927171900
+    author: familytree
+    comment: insert Admin user
+    changes:
+    - insert:
+        tableName: user
+        columns:
+        - column:
+            name: user_name
+            value: admin
+        - column:
+              name: password
+              value: admin
+- changeSet:
+    id: 20180927172100
+    author: familytree
+    comment: insert User user
+    changes:
+    - insert:
+        tableName: user
+        columns:
+        - column:
+            name: user_name
+            value: user
+        - column:
+            name: password
+            value: user
+- changeSet:
+    id: 20180927172200
+    author: familytree
+    comment: insert Admin user
+    changes:
+    - insert:
+        tableName: role
+        columns:
+        - column:
+            name: id
+            value: 10
+        - column:
+            name: name
+            value: "ADMIN"
+- changeSet:
+    id: 20180927172400
+    author: familytree
+    comment: insert User user
+    changes:
+    - insert:
+        tableName: role
+        columns:
+        - column:
+            name: id
+            value: 20
+        - column:
+            name: name
+            value: "USER"
+- changeSet:
+    id: 20180927172700
+    author: familytree
+    comment: insert Guest user
+    changes:
+    - insert:
+        tableName: role
+        columns:
+        - column:
+            name: id
+            value: 30
+        - column:
+            name: name
+            value: "GUEST"

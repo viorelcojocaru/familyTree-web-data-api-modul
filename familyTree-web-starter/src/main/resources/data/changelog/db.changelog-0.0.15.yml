@@ -1,0 +1,31 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180927150200
+    author: familytree
+    comment: create Table roles
+    changes:
+    - createTable:
+        tableName: role
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: (10)
+            constraints:
+            - primaryKeyName: role_id_pk
+            - primaryKey: true
+            - nullable: false
+        - column:
+            name: name
+            type: varchar(50)
+- changeSet:
+      id: 20180927152700
+      author: familytree
+      comment: addUniqueConstraint- id, name
+      changes:
+      - addUniqueConstraint:
+            columnNames: id, name
+            constraintName: const_role_id_name
+            deferrable: true
+            schemaName: public
+            tableName: role

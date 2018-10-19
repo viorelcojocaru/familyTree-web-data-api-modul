@@ -1,0 +1,67 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180927144400
+    author: familytree
+    comment: create Table PersonToUser
+    changes:
+    - createTable:
+        tableName: person_to_user
+        columns:
+        - column:
+            name: user_id
+            type: BIGSERIAL
+            constraints:
+            - primaryKeyName: person_to_user_user_id_pk
+            - primaryKey: true
+            - nullable: false
+        - column:
+            name: person_id
+            type: BIGSERIAL
+            constraints:
+            - primaryKeyName: person_to_user_person_id_pk
+            - primaryKey: true
+            - nullable: false
+
+- changeSet:
+    id: 20180927144500
+    author: familytree
+    comment: addForeignKeyConstraint user_id
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: person_to_user
+        constraintName: fk_user_id
+        deferrable: true
+        initiallyDeferred: true
+        onDelete: CASCADE
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: user
+
+- changeSet:
+    id: 20180927145000
+    author: familytree
+    comment: addForeignKeyConstraint person_id
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: person_id
+        baseTableName: person_to_user
+        constraintName: fk_person_id
+        deferrable: true
+        initiallyDeferred: true
+        onDelete: CASCADE
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: person
+
+- changeSet:
+    id: 20180927145400
+    author: familytree
+    comment: addUniqueConstraint- user_id, person_id,
+    changes:
+    - addUniqueConstraint:
+        columnNames: user_id, person_id
+        constraintName: const_user_id_person_id
+        deferrable: true
+        schemaName: public
+        tableName: person_to_user

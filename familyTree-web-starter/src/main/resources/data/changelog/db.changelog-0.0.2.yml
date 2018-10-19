@@ -1,0 +1,24 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180925110000
+    author: familytree
+    comment: insert person
+    changes:
+    - insert:
+          tableName: person
+          columns:
+          - column:
+              name: first_name
+              value: Boba
+          - column:
+              name: last_name
+              value: Burguers
+          - column:
+              name: birth_date
+              value: 1986-09-16
+          - column:
+              name: in_alive
+              valueBoolean: true
+          - column:
+              name: gender
+              value: 20

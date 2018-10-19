@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/
+extras/spring-security">
+<head>
+    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css">
+    </link>
+    <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap-glyphicons.
+css"></link>
+    <link rel="stylesheet" type="text/css" media="all" href="css/styles.css"></link>
+</head>
+<body>
+<div class="container">
+    <h1>Family Tree Admin page</h1>
+    <p>Welcome Administrator(<span sec:authentication="principal.username">User</span>)</p>
+    <p><a th:href="@{/logout}">Logout</a></p>
+    </p>
+    <div class="content">
+        <p th:if="${param.logout}" class="alert">You have been logged out</p>s
+        <p th:if="${param.error}" class="alert alert-error">There was an error, please
+            try again</p>
+       <h2>welcome Admin role page <span th:text="${admin.firstName}"/><span th:text="${admin.lastName}"/></h2>
+
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180927104200
+    author: familytree
+    comment: insert country Moldova
+    changes:
+    - insert:
+        tableName: country
+        columns:
+        - column:
+            name: name
+            value: "Moldova"
+- changeSet:
+    id: 20180927104400
+    author: familytree
+    comment: insert country Russian Federation
+    changes:
+    - insert:
+        tableName: country
+        columns:
+        - column:
+            name: name
+            value: "Russian Federation"
+- changeSet:
+    id: 20180927104500
+    author: familytree
+    comment: insert country Moldova
+    changes:
+    - insert:
+        tableName: country
+        columns:
+        - column:
+            name: name
+            value: "Romania"
+- changeSet:
+    id: 20180927104600
+    author: familytree
+    comment: insert country Ukraine
+    changes:
+    - insert:
+        tableName: country
+        columns:
+        - column:
+            name: name
+            value: "Ukraine"

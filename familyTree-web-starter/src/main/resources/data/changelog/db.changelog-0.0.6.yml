@@ -1,0 +1,32 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180927094900
+    author: familytree
+    comment: create Table app Account
+    changes:
+    - createTable:
+        tableName: app_account
+        columns:
+        - column:
+            name: id
+            type: BIGSERIAL
+            constraints:
+            - primaryKeyName: app_account_id_pk
+            - primaryKey: true
+            - nullable: false
+        - column:
+            name: name
+            type: varchar(50)
+            constraints:
+            - nullable: false
+        - column:
+            name: person_id
+            type: BIGSERIAL
+            constraints:
+            - nullable: false
+        - column:
+            name: type_id
+            type: int
+            constraints:
+            - nullable: false
+

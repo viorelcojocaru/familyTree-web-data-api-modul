@@ -1,0 +1,64 @@
+databaseChangeLog:
+- changeSet:
+      id: 20180927123300
+      author: familytree
+      comment: create Table relation
+      changes:
+      - createTable:
+            tableName: relation
+            columns:
+            - column:
+                name: id
+                type: BIGSERIAL
+                constraints:
+                - primaryKeyName: relation_id_pk
+                - primaryKey: true
+                - nullable: false
+            - column:
+                name: from_app_account_id
+                type: BIGSERIAL
+                constraints:
+                - nullable: false
+            - column:
+                name: to_app_account_id
+                type: BIGSERIAL
+                constraints:
+                - nullable: false
+            - column:
+                name: start_date
+                type: date
+            - column:
+                name: end_date
+                type: date
+
+
+- changeSet:
+      id: 20180927123400
+      author: familytree
+      comment: addForeignKeyConstraint from_app_account_id
+      changes:
+      - addForeignKeyConstraint:
+            baseColumnNames: from_app_account_id
+            baseTableName: relation
+            constraintName: fk_contact_from_app_account_id
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: app_account
+- changeSet:
+      id: 20180927121500
+      author: familytree
+      comment: addForeignKeyConstraint to_app_account_id
+      changes:
+      - addForeignKeyConstraint:
+            baseColumnNames: to_app_account_id
+            baseTableName: relation
+            constraintName: fk_contact_to_app_account_id
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: app_account

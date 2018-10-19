@@ -1,0 +1,75 @@
+databaseChangeLog:
+- changeSet:
+      id: 20180927120300
+      author: familytree
+      comment: create Table contact
+      changes:
+      - createTable:
+            tableName: contact
+            columns:
+            - column:
+                name: id
+                type: BIGSERIAL
+                constraints:
+                - primaryKeyName: contact_id_pk
+                - primaryKey: true
+                - nullable: false
+            - column:
+                name: email
+                type: varchar(50)
+            - column:
+                name: person_id
+                type: BIGSERIAL
+                constraints:
+                - nullable: false
+            - column:
+                name: web_site
+                type: varchar(255)
+            - column:
+                name: face_book
+                type: varchar(255)
+            - column:
+                name: blog
+                type: varchar(255)
+            - column:
+                name: photo_galery
+                type: varchar(255)
+            - column:
+                name: skype
+                type: varchar(255)
+            - column:
+                name: city
+                type: varchar(255)
+            - column:
+                  name: country_id
+                  type: int
+- changeSet:
+      id: 20180927121200
+      author: familytree
+      comment: addForeignKeyConstraint person_id
+      changes:
+      - addForeignKeyConstraint:
+            baseColumnNames: person_id
+            baseTableName: contact
+            constraintName: fk_contact_person
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: person
+- changeSet:
+      id: 20180927121500
+      author: familytree
+      comment: addForeignKeyConstraint country_id
+      changes:
+      - addForeignKeyConstraint:
+            baseColumnNames: country_id
+            baseTableName: contact
+            constraintName: fk_contact_country
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: country

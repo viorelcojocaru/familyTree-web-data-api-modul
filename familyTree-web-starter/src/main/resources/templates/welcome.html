@@ -1,0 +1,150 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/familyTreeStyles.css}">
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-grid.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-reboot.css}">-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    <title>Welcome Page</title>
+</head>
+
+<body>
+<div class="continer">
+    <div id="header-panel">
+        <div th:insert="~{header :: welcome}"> </div>
+        <br>
+        <br>
+        <div sec:authorize="hasAuthority('ADMIN')">
+            <h3>You will see this only if you are ADMIN</h3>
+            <p><a th:href="@{/admin}">Admin Home</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="tab">
+                    <button class="tablinks" onclick="openTab(event, 'Personal')">Personal</button>
+                    <button class="tablinks" onclick="openTab(event, 'Contacts')">Contacts</button>
+                    <button class="tablinks" onclick="openTab(event, 'Biographical')">Biographical</button>
+                </div>
+                <div id="Personal" class="tabcontent">
+                    <h3>Personal data</h3>
+                    <h4>
+                        <label class="label-default">First name</label><br/>
+                        <span th:text="${person.firstName}"></span>
+
+                        <label class="label-default">Last name</label><br/>
+                        <span th:text="${person.lastName}"></span>
+                    </h4>
+                    <p>
+                        <label class="label-default">Last name on birth</label><br/>
+                        <span th:text="${person.lastNameOnBirth}"></span></p>
+                    <p>
+                        <label class="label-default">Gender</label><br/>
+                        <span th:text="${person.gender}"></span></p>
+                    <p>
+                        <label class="label-default">Birth date</label><br/>
+                        <span th:text="${person.birthDate}"></span>
+                    </p>
+                    <p>
+                    <div th:if="${person.inALive}">
+                        <label class="label-default">in alive</label>
+                    </div>
+                    </p>
+                    <p>
+                    <div th:if="${!person.inALive}">
+                        <label class="label-default">Death Date</label><br/>
+                        <span th:text="${person.deathDate}"> </span>
+                    </div>
+                    </p>
+                </div>
+                <div id="Contacts" class="tabcontent">
+                    <h3>Contacts</h3>
+                    <div>
+                        <table class="info">
+                            <tr>
+                                <td>
+                                    <label class="label-default">email</label>
+                                    <span type="text" th:field="${contact.email}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="label-default">WebSite</label>
+                                    <span type="text" th:field="${contact.webSite}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="label-default">FaceBook</label>
+                                    <span type="text" th:field="${contact.faceBook}"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label class="label-default">Blog</label>
+                                    <span type="text" th:field="${contact.blog}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="label-default">PhotoGalery</label>
+                                    <span type="text" th:field="${contact.photoGalery}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="label-default">Skype</label>
+                                    <span type="text" th:field="${contact.skype}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="label-default">City</label>
+                                    <span type="text" th:field="${contact.city}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                               <!-- <td>
+                                     <label>Country</label>
+                                     &lt;!&ndash;<select th:field="*{country}">
+                                         <option th:each="country : ${countys}"
+                                                 th:value="${country}"
+                                                 th:text="#{${'contact.country.' + country}}">${country.name}</option>
+                                     </select>&ndash;&gt;
+                                 </td>-->
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="Biographical" class="tabcontent">
+                    <h3>Biographical</h3>
+                    <p>Tokyo is the capital of Japan.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <br>  <a th:href="@{'/editPerson/id/0'}" class="btn btn-primary eBtn" sec:authorize="hasAuthority('ADMIN')">New Person</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div th:insert="~{personList :: personList}"></div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>FamilyTree Security Page</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-grid.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-reboot.css}">
+
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+</head>
+
+<body class="text-center">
+<form th:action="@{/registration}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
+</form>
+
+<div class="container">
+    <div class="table">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <form th:action="@{/login}" method="POST" class="form-horizontal">
+                    <h3 class="form-signin-heading" th:text="Welcome"></h3>
+                    <div class="form-group">
+                        <label for="username" class="sr-only">Login</label>
+                        <input type="text" id="username" name="username"  th:required="true" th:placeholder="Username"
+                               class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="sr-only">Password</label>
+                        <input type="password" id="password" name="password" th:placeholder="Password" th:required="true"
+                               class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <div align="center" th:if="${param.error}">
+                            <p style="font-size: 20; color: #FF1C19;">UserName or Password invalid, please
+                                verify</p>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login"
+                                    type="Submit"
+                                    th:text="Login"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

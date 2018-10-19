@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!--xmlns:sec="http://www.thymeleaf.org/extras/spring-security"-->
+<!--http://www.thymeleaf.org/thymeleaf-extras-springsecurity4-->
+<body>
+<div th:fragment="personList">
+    <div class="table border-bottom-1 border-dark">
+        <div class="tab-header-area">
+            <div class="row text-black-50">
+                <div class="col">
+                    <span>First Name</span>
+                </div>
+                <div class="col">
+                    <span>Last Name Now</span>
+                </div>
+                <div class="col">
+                    <span>Born</span>
+                </div>
+                <div class="col">
+                    <span>Action Edit</span>
+                </div>
+                <div class="col" sec:authorize="hasAuthority('ADMIN')">
+                    <span>Action Delete</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" th:each="entry,status : ${persons}">
+            <div class="col">
+                <a th:href="@{'/viewPerson/id/'+${entry.id}}" class="btn-link" th:text="${entry.firstName}"></a>
+            </div>
+            <div class="col">
+                <span th:text="${entry.lastName}">Last Name Now</span>
+            </div>
+            <div class="col">
+                <span th:text="${#calendars.format(entry.birthDate,'yyyy-MM-dd')}">born</span>
+            </div>
+            <div class="col">
+                <a th:href="@{'/editPerson/id/'+${entry.id}}" class="btn btn-primary eBtn">Edit</a>
+            </div>
+            <div class="col" sec:authorize="hasAuthority('ADMIN')">
+                <a th:href="@{'/editPerson/delete/id/'+${entry.id}}" class="btn btn-primary btn-success">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

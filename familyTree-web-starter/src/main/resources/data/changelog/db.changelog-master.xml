@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+   <include file="data/changelog/db.changelog-0.0.1.yml"/>
+   <include file="data/changelog/db.changelog-0.0.2.yml"/>
+   <include file="data/changelog/db.changelog-0.0.3.yml"/>
+   <include file="data/changelog/db.changelog-0.0.4.yml"/>
+   <include file="data/changelog/db.changelog-0.0.5.yml"/>
+   <include file="data/changelog/db.changelog-0.0.6.yml"/>
+   <include file="data/changelog/db.changelog-0.0.7.yml"/>
+   <include file="data/changelog/db.changelog-0.0.8.yml"/>
+   <include file="data/changelog/db.changelog-0.0.9.yml"/>
+   <include file="data/changelog/db.changelog-0.0.10.yml"/>
+   <include file="data/changelog/db.changelog-0.0.11.yml"/>
+   <include file="data/changelog/db.changelog-0.0.12.yml"/>
+   <include file="data/changelog/db.changelog-0.0.13.yml"/>
+   <include file="data/changelog/db.changelog-0.0.14.yml"/>
+   <include file="data/changelog/db.changelog-0.0.15.yml"/>
+   <include file="data/changelog/db.changelog-0.0.16.yml"/>
+   <include file="data/changelog/db.changelog-0.0.17.yml"/>
+   <include file="data/changelog/db.changelog-0.0.18.yml"/>
+   <include file="data/changelog/db.changelog-0.0.19.yml"/>
+
+
+</databaseChangeLog>

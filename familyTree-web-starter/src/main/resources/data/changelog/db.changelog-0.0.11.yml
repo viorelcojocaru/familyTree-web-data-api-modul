@@ -1,0 +1,23 @@
+databaseChangeLog:
+- changeSet:
+    id: 20180927130400
+    author: familyTree
+    comment: dropUniqueConstraint
+    changes:
+    - dropUniqueConstraint:
+        catalogName: familyTree
+        constraintName: const_app-account_id_person_id
+        schemaName: public
+        tableName: app_account
+
+- changeSet:
+    id: 20180927130500
+    author: familytree
+    comment: addUniqueConstraint- id, person_id
+    changes:
+    - addUniqueConstraint:
+        columnNames: id, person_id
+        constraintName: const_app_account_id_person_id
+        deferrable: true
+        schemaName: public
+        tableName: app_account
