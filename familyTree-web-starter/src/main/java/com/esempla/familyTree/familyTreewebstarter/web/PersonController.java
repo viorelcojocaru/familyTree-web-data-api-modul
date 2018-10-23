@@ -1,16 +1,16 @@
 package com.esempla.familyTree.familyTreewebstarter.web;
 
 //import com.esempla.familyTree.familyTreeapi.controller.ResourceNotFoundException;
+
 import com.esempla.familyTree.familyTreecommonutils.constants.AppAccountTypes;
 import com.esempla.familyTree.familyTreecommonutils.constants.Pages;
 import com.esempla.familyTree.familyTreedata.BC.AccountBC;
-import com.esempla.familyTree.familyTreedata.domain.Contact;
-import com.esempla.familyTree.familyTreedata.domain.Country;
-import com.esempla.familyTree.familyTreedata.domain.Person;
-import com.esempla.familyTree.familyTreedata.domain.UserToPerson;
+import com.esempla.familyTree.familyTreedata.domain.*;
 import com.esempla.familyTree.familyTreedata.repository.UserToPersonRepository;
 import com.esempla.familyTree.familyTreedata.repository.UserToRoleRepository;
 import com.esempla.familyTree.familyTreedata.service.*;
+import com.esempla.familyTree.familyTreedata.service.PersonService;
+import com.esempla.familyTree.familyTreewebstarter.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
@@ -48,7 +48,7 @@ public class PersonController {
             person = new Person();
         else {
             if (!personService.existEntry(id)) System.out.println();
-                //throw new ResourceNotFoundException("not found person with id:" + id);
+            //throw new ResourceNotFoundException("not found person with id:" + id);
             person = personService.getById(id);
         }
         Contact contact = person.getContact();
@@ -75,13 +75,15 @@ public class PersonController {
         return modelAndView;
     }
 
-    @PostMapping(value = "/editPerson/save")
-    public ModelAndView save(@Valid Person person, BindingResult bindingResult, ModelAndView modelAndView) {
-       // System.out.println(sourceId); , Long sourceId
-      //  System.out.println(typeId); ,  Long typeId
-       // personService.saveOrUpdate(person);
-        System.out.println(person);
-        /*if ( false) {
+    /*  @PostMapping(value = "/editPerson/save")
+      public ModelAndView save(@Valid Person person, @RequestParam Long sourceId , @RequestParam Long typeId , BindingResult bindingResult, ModelAndView modelAndView) {
+          System.out.println(modelAndView.getModel().get("sourceId")); //, Long sourceId
+          System.out.println(sourceId); //, Long sourceId
+          System.out.println(modelAndView.getModel().get("typeId")) ;//,  Long typeId
+          System.out.println(typeId) ;//,  Long typeId
+          personService.saveOrUpdate(person);
+          System.out.println(person);
+          *//*if ( false) {
             AppAccount currentAppAcc = accountBC.createAppAccount(person, appAccountTypeService.getById(typeId));
             appAccountService.saveOrUpdate(currentAppAcc);
             AppAccount appAccountFrom = null;
@@ -99,16 +101,16 @@ public class PersonController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }*/
-       // modelAndView.addObject("person", person);
-       // modelAndView.setViewName("redirect:/viewPerson/id/" + person.getId());
+        }*//*
+        modelAndView.addObject("person", person);
+        modelAndView.setViewName("redirect:/viewPerson/id/" + person.getId());
         return modelAndView;
     }
+*/
+    @PostMapping(value = "/editPerson/id/{id}")
+    public ModelAndView savePerson(@Valid Person person, BindingResult bindingResult, ModelAndView modelAndView) {
 
-   // @PostMapping(value = "/editPerson/save")
-  //  public ModelAndView saveCild(@Valid Person person, String sourceId,  String typeId, BindingResult bindingResult, ModelAndView modelAndView) {
-
-       // personService.saveOrUpdate(person);
+        // personService.saveOrUpdate(person);
 //        System.out.println(sourceId);
 //        System.out.println(typeId);
         /*if ( false) {
@@ -130,10 +132,53 @@ public class PersonController {
                 e.printStackTrace();
             }
         }*/
+        System.out.println(this.typeId);
+        System.out.println(this.sourceId);
+        if (this.typeId == AppAccountTypes.CILD)
+            System.out.println("CILD");
+        if (this.typeId == AppAccountTypes.EX_PARTNER)
+            System.out.println("EX_PARTNER");
+        if (this.typeId == AppAccountTypes.PARTNER)
+            System.out.println("PARTNER");
+        if (this.typeId == AppAccountTypes.HUSBAND)
+            System.out.println("HUSBAND");
+        if (this.typeId == AppAccountTypes.WIFE)
+            System.out.println("WIFE");
+
+        this.typeId=null;
+        this.sourceId=null;
+        modelAndView.addObject("person", person);
+        modelAndView.setViewName("redirect:/viewPerson/id/" + person.getId());
+        return modelAndView;
+    }
+
+    private Long typeId;
+    private Long sourceId;
+
+    @GetMapping(value = "/editPerson/id/{id}/typeId/{typeId}/sourceId/{sourceId}")
+    public ModelAndView getNewPerson(@PathVariable Long id, @PathVariable Long typeId, @PathVariable Long sourceId, ModelAndView modelAndView) {
+        System.out.println(typeId);
+        System.out.println(sourceId);
+        this.typeId = typeId;
+        this.sourceId = sourceId;
+//        modelAndView.addObject("typeId", typeId);
+//        modelAndView.addObject("sourceId", sourceId);
+        modelAndView = buildPersonModelAndView(id, modelAndView);
+        modelAndView.setViewName("redirect:/editPerson/id/" + id);//+"/typeId/{typeId}/sourceId/{sourceId}"
+        return modelAndView;
+
+    }
+
+//    @PostMapping(value = "/editPerson/id/{id}/typeId/{typeId}/sourceId/{sourceId}")
+//    public ModelAndView saveNewPerson(@Valid Person person, @PathVariable Long typeId, @PathVariable Long sourceId, BindingResult bindingResult, ModelAndView modelAndView) {
+//        System.out.println(typeId);
+//        System.out.println(sourceId);
+//
 //        modelAndView.addObject("person", person);
 //        modelAndView.setViewName("redirect:/viewPerson/id/" + person.getId());
 //        return modelAndView;
 //    }
+
 
     @PostMapping("editPerson")
     public ModelAndView createPerson(@Valid Person person, BindingResult result) {
@@ -146,9 +191,9 @@ public class PersonController {
     public ModelAndView delete(@PathVariable Long id, ModelAndView modelAndView) {
         Person person;
         if (personService.existEntry(id)) {
-            if (userToPersonRepository.existsUserToPersonByPersonId(id)){
-                UserToPerson userToPerson=userToPersonRepository.getUserToPersonByPersonId(id);
-                if (userService.existEntry(userToPerson.getUserId())){
+            if (userToPersonRepository.existsUserToPersonByPersonId(id)) {
+                UserToPerson userToPerson = userToPersonRepository.getUserToPersonByPersonId(id);
+                if (userService.existEntry(userToPerson.getUserId())) {
                     userService.delete(userToPerson.getUserId());
                 }
             }
@@ -169,9 +214,9 @@ public class PersonController {
     }
 
     @GetMapping("/viewPerson/id/{id}/addCild")
-    public ModelAndView addCild(@PathVariable Long id, Long type, ModelAndView modelAndView) {
+    public ModelAndView addCild(@PathVariable Long id, ModelAndView modelAndView) {
         if (personService.existEntry(id)) {
-            modelAndView.addObject("sourceId", id.intValue());
+            modelAndView.addObject("sourceId", id);
             modelAndView.addObject("typeId", AppAccountTypes.CILD);
             modelAndView.setViewName("redirect:/editPerson/id/0");
 

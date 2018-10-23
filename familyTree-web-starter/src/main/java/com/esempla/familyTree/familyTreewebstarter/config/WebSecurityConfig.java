@@ -1,6 +1,6 @@
 package com.esempla.familyTree.familyTreewebstarter.config;
 
-import com.esempla.familyTree.familyTreedata.service.DomainUserDetailsService;
+import com.esempla.familyTree.familyTreewebstarter.service.DomainUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.BeanInitializationException;

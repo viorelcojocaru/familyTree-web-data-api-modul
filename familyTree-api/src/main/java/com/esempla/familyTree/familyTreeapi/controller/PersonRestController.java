@@ -1,9 +1,8 @@
 package com.esempla.familyTree.familyTreeapi.controller;
 
-import com.esempla.familyTree.familyTreedata.domain.Person;
-import com.esempla.familyTree.familyTreedata.domain.PersonDto;
-import com.esempla.familyTree.familyTreedata.service.PersonService;
+import com.esempla.familyTree.familyTreedata.domain.*;
 
+import com.esempla.familyTree.familyTreedata.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -38,8 +37,7 @@ public class PersonRestController {
     @ResponseBody
     public PersonDto getPerson(@PathVariable("id") Long id) {
         Person person = personService.getById(id);
-        if (person == null) System.out.println();
-           // new ResourceNotFoundException("No post found with id=" + id);
+        if (person == null)  new ResourceNotFoundException("No get found with id=" + id);
         return convertToDto(person);
     }
 
@@ -55,8 +53,8 @@ public class PersonRestController {
     @ResponseStatus(HttpStatus.OK)
     public PersonDto updatePost(@RequestBody
             PersonDto personDto) throws ParseException {
-        if (!personService.existEntry(personDto.getId())) System.out.println();
-            //new ResourceNotFoundException("No post found with id=" + personDto.getId());
+        if (!personService.existEntry(personDto.getId()))
+            new ResourceNotFoundException("No post found with id=" + personDto.getId());
         Person person=convertToEntity(personDto);
         Person personUpdated=personService.saveOrUpdate(person);
         return convertToDto(personUpdated);

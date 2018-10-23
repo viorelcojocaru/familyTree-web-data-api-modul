@@ -23,6 +23,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             throw new
                     BadCredentialsException("External system authentication failed");
         }
+
     }
 
     @Override

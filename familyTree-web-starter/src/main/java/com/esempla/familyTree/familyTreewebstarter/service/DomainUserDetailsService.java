@@ -1,4 +1,5 @@
-package com.esempla.familyTree.familyTreedata.service;
+package com.esempla.familyTree.familyTreewebstarter.service;
+
 
 import com.esempla.familyTree.familyTreedata.domain.User;
 import com.esempla.familyTree.familyTreedata.repository.UserRepository;
@@ -16,7 +17,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 
 @Service
 @Transactional

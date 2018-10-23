@@ -1,7 +1,7 @@
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/familyTree
+    url: jdbc:postgresql://192.168.16.162:5432/familyTree
     username: postgres
     password: postgres
   jpa:
@@ -23,11 +23,10 @@ spring:
     hibernate.temp.use_jdbc_metadata_defaults: false
   liquibase:
     change-log: classpath:/data/changelog/db.changelog-master.xml
-    enabled: true
+    enabled: false
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     url: ${spring.datasource.url}
-
   messages:
     basename: i18n/messages
 

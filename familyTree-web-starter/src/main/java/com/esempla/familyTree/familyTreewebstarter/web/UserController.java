@@ -7,7 +7,7 @@ import com.esempla.familyTree.familyTreedata.domain.Contact;
 import com.esempla.familyTree.familyTreedata.domain.Person;
 import com.esempla.familyTree.familyTreedata.domain.User;
 import com.esempla.familyTree.familyTreedata.service.PersonService;
-import com.esempla.familyTree.familyTreedata.service.UserService;
+import com.esempla.familyTree.familyTreewebstarter.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

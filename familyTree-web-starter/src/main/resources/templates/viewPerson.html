@@ -69,7 +69,7 @@
                     </div>
                     </p>
 
-                    <a th:href="@{{id}/addCild(id=${person.id})}" class="btn btn-default">Add Cild</a>
+                    <a th:href="@{/editPerson/id/{id}/typeId/{typeId}/sourceId/{sourceId}(id=0, typeId=${10}, sourceId=${person.id})}" class="btn btn-default">Add Cild</a>
 
                    <!-- <form action="#" th:action="@{/addParentOrEx}" th:object="${perosn}"
                           method="POSt">

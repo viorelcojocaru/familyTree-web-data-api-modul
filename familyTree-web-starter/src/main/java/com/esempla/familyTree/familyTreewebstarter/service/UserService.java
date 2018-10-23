@@ -1,4 +1,4 @@
-package com.esempla.familyTree.familyTreedata.service;
+package com.esempla.familyTree.familyTreewebstarter.service;
 
 import com.esempla.familyTree.familyTreecommonutils.constants.Roles;
 import com.esempla.familyTree.familyTreedata.domain.Role;

@@ -1,4 +1,4 @@
-package com.esempla.familyTree.familyTreedata.service;
+package com.esempla.familyTree.familyTreewebstarter.service;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -9,7 +9,7 @@ import com.esempla.familyTree.familyTreedata.domain.User;
 import com.esempla.familyTree.familyTreedata.service.AppAccountService;
 import com.esempla.familyTree.familyTreedata.service.AppAccountTypeService;
 import com.esempla.familyTree.familyTreedata.service.PersonService;
-import com.esempla.familyTree.familyTreedata.service.UserService;
+import com.esempla.familyTree.familyTreewebstarter.service.UserService;
 import com.esempla.familyTree.familyTreewebstarter.validation.UserValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

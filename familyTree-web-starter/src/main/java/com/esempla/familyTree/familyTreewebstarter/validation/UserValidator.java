@@ -1,7 +1,7 @@
 package com.esempla.familyTree.familyTreewebstarter.validation;
 
 import com.esempla.familyTree.familyTreedata.domain.User;
-import com.esempla.familyTree.familyTreedata.service.UserService;
+import com.esempla.familyTree.familyTreewebstarter.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

@@ -34,10 +34,14 @@ extras/spring-security" xmlns="http://www.w3.org/1999/html">
                 <div id="Personal" class="tabcontent">
                     <h3>Personal data</h3>
                     <div class="form-group">
-                        <form id="personForm" class="personForm" autocomplete="off" th:action="@{/editPerson/save}"
+                        <form id="personForm" class="personForm" autocomplete="off" th:action="@{/editPerson/id/{id}}"
                               th:object="${person}"
                               method="post" role="form">
                             <input id="id" type="text" th:field="*{id}" hidden="true"/>
+                            <div  th:text="${sourceId}" ></div>
+                            <span  th:text="${typeId}" value="${typeId}"></span>
+                            <!--<span id="sourceId" type="text" th:field="${sourceId}" hidden="(false)"/>
+                            <span id="typeId" type="text" th:field="${typeId}" hidden="false"/>-->
 
                             <table class="formTable">
                                 <tr>
@@ -88,7 +92,7 @@ extras/spring-security" xmlns="http://www.w3.org/1999/html">
                                 </tr>
                             </table>
                             <button type="submit" class="btn btn-primary btn-block">Save</button>
-                            <a th:href="@{'/editPerson/delete/id/'+*{id}}" class="btn btn-primary btn-block" >Delete</a>
+                            <a th:href="@{'/editPerson/delete/id/'+${person.id}}" class="btn btn-primary btn-block" >Delete</a>
                         </form>
                     </div>
                 </div>
