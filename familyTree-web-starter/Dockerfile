@@ -1,5 +1,8 @@
-FROM openjdk:8
-ADD target/docker-familytree.jar docker-familytree.jar
+FROM java:8-jdk-alpine
+VOLUME /tmp
+ARG JAR_FILE
+ADD ${JAR_FILE} app.jar
+RUN sh -c 'touch /app.jar'
+RUN sh -c 'apk add --no-cache bash'
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "docker-familytree.jar"]
-
+ENTRYPOINT ["java","-jar","/app.jar"]

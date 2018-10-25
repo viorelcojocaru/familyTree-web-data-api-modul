@@ -1,10 +1,15 @@
 databaseChangeLog:
 - changeSet:
-    id: 2018101814700
-    author: viorelgggg
+    id: 20180927173801
+    author: familytree
+    comment: insert  user to person
     changes:
-        - renameTable:
-            catalogName: familyTree
-            newTableName: user_to_person
-            oldTableName: person_to_user
-            schemaName: public
+    - insert:
+        tableName: user_to_person
+        columns:
+        - column:
+            name: user_id
+            value: 1
+        - column:
+            name: person_id
+            value: 1

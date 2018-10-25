@@ -7,6 +7,7 @@ import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomBasicAuthenticationEntryPoint customBasicAuthenticationEntryPoint;
     // private final CustomAuthenticationProvider customAuthenticationProvider;
 
+
     @PostConstruct
     public void init() {
         try {
@@ -56,7 +58,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return getBCryptPasswordEncoder();
+    }
+    @Bean
+    @Primary
+    public BCryptPasswordEncoder getBCryptPasswordEncoder() { return new BCryptPasswordEncoder();
     }
 
     @Bean

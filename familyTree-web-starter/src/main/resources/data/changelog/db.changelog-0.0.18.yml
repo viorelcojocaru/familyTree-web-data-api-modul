@@ -12,7 +12,7 @@ databaseChangeLog:
             value: guest
         - column:
               name: password
-              value: guest
+              value: $2a$10$s8Iav36YpSZwg936QsZDiOD3PmZt0FNDosMk3g5vb1RUeEfHtFC5O
 - changeSet:
       id: 20180927173800
       author: familytree

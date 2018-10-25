@@ -8,7 +8,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
    <include file="data/changelog/db.changelog-0.0.1.yml"/>
-   <include file="data/changelog/db.changelog-0.0.2.yml"/>
+    <include file="data/changelog/db.changelog-0.0.2.yml"/>
    <include file="data/changelog/db.changelog-0.0.3.yml"/>
    <include file="data/changelog/db.changelog-0.0.4.yml"/>
    <include file="data/changelog/db.changelog-0.0.5.yml"/>
@@ -25,7 +25,7 @@
    <include file="data/changelog/db.changelog-0.0.16.yml"/>
    <include file="data/changelog/db.changelog-0.0.17.yml"/>
    <include file="data/changelog/db.changelog-0.0.18.yml"/>
-   <include file="data/changelog/db.changelog-0.0.19.yml"/>
+    <include file="data/changelog/db.changelog-0.0.19.yml"/>
 
 
 </databaseChangeLog>

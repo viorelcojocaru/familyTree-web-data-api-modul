@@ -83,3 +83,17 @@ databaseChangeLog:
             - column:
                   name: name
                   value: Husband
+- changeSet:
+    id: 20180927094701
+    author: familytree
+    comment: insert husband app Account type
+    changes:
+    - insert:
+        tableName: app_account_type
+        columns:
+        - column:
+            name: id
+            value: 70
+        - column:
+            name: name
+            value: Root

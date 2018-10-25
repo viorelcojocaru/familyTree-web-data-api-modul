@@ -21,9 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
         return new SpringSecurityDialect();
     }
 
-    @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder() { return new BCryptPasswordEncoder();
-    }
+
 
 
 

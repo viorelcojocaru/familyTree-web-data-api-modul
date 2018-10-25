@@ -9,16 +9,16 @@ databaseChangeLog:
           columns:
           - column:
               name: first_name
-              value: Boba
+              value: Viorel
           - column:
               name: last_name
-              value: Burguers
+              value: Cojocaru
           - column:
               name: birth_date
-              value: 1986-09-16
+              value: 1984-01-23
           - column:
               name: in_alive
               valueBoolean: true
           - column:
               name: gender
-              value: 20
+              value: 10

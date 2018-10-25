@@ -9,7 +9,7 @@ databaseChangeLog:
         columns:
         - column:
             name: id
-            type: int
+            type: BIGSERIAL
             autoIncrement: true
             constraints:
             - primaryKeyName: country_id_pk

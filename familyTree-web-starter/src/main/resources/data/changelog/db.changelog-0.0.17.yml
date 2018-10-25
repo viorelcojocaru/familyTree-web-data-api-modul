@@ -12,7 +12,7 @@ databaseChangeLog:
             value: admin
         - column:
               name: password
-              value: admin
+              value: $2a$10$OKdJlhxXbc.ed.3SsRlHfON/Wg4bmSV9HIYkZf4DlHDXohXGPnNxG
 - changeSet:
     id: 20180927172100
     author: familytree
@@ -26,7 +26,7 @@ databaseChangeLog:
             value: user
         - column:
             name: password
-            value: user
+            value: $2a$10$13UrbXyGb30i5Gcd/I2fX.MmPzWT0/p8sBtktcPHl1NMSd/ro5576
 - changeSet:
     id: 20180927172200
     author: familytree
