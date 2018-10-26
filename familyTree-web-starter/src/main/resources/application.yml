@@ -23,10 +23,9 @@ spring:
     hibernate.temp.use_jdbc_metadata_defaults: false
   liquibase:
     change-log: classpath:/data/changelog/db.changelog-master.xml
-    enabled: false
+    enabled: true
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     url: ${spring.datasource.url}
   messages:
     basename: i18n/messages
-
