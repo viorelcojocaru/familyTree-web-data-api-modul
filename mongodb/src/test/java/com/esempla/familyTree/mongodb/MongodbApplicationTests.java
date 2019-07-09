@@ -1,4 +1,4 @@
-package com.esempla.familyTree.familyTreewebstarter;
+package com.esempla.familyTree.mongodb;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FamilyTreeWebStarterApplicationTests {
+public class MongodbApplicationTests {
 
 	@Test
 	public void contextLoads() {

@@ -29,3 +29,20 @@ spring:
     url: ${spring.datasource.url}
   messages:
     basename: i18n/messages
+#server:
+#  ssl:
+#    enabled: true
+#    key-store: classpath:server.jks
+#    key-store-password: 123456
+#    key-password: 1234567
+#    trust-store: classpath:server.jks
+#    trust-store-password: 123456
+#    client-auth: need
+#    enabled-Protocols: [TLSv1.2]
+---
+spring:
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.2:27017/familytree
+
+

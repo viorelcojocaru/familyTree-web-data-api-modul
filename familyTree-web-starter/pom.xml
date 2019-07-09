@@ -41,6 +41,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -65,7 +66,11 @@
             <scope>compile</scope>
             <optional>true</optional>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.3.4.BUILD-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 
@@ -85,7 +90,7 @@
                         <phase>package</phase>
                         <goals>
                             <goal>build</goal>
-                            <!--<goal>push</goal>-->
+                            <goal>push</goal>
                         </goals>
                     </execution>
                 </executions>

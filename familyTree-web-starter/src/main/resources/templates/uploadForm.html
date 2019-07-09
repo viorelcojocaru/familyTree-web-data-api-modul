@@ -1,0 +1,52 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<body>
+
+<!--<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>-->
+
+<div>
+    <form method="POST" enctype="multipart/form-data " th:action="@{/uploadForm}">
+        <table>
+            <tr>
+                <td>File to upload:</td>
+                <td><input type="file" name="file"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Upload"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div>
+    <form method="GET" id="searchForm" th:object="${myFormObject}" th:action="@{/searchForm} ">
+        <table>
+            <tr>
+                <td>File to find:</td>
+                <td>
+                    <input th:type="text" id="id" name="id" th:field="*{id}"  />
+                    <input th:type="text" id="name" name="name" th:field="*{name}"  />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input th:type="submit" value="search"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--<div>
+    <ul>
+        <li th:each="file : ${files}">
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>-->
+
+</body>
+</html>

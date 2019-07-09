@@ -4,7 +4,7 @@ services:
   web:
     image: viorelcojocaru2008/family:0.0.1-SNAPSHOT
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/familyTree
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/familyTree
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
     ports:
@@ -20,4 +20,4 @@ services:
       - POSTGRES_DB=familyTree
     restart: always
     ports:
-      - "5432:5433"
+      - "5432:5432"

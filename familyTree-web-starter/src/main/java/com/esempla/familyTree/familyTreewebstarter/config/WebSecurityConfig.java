@@ -24,17 +24,15 @@ import javax.annotation.PostConstruct;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String LOGIN_PAGE = "/login";
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
-
     private final DomainUserDetailsService customUserDetailsService;
 
     private final CustomBasicAuthenticationEntryPoint customBasicAuthenticationEntryPoint;
-    // private final CustomAuthenticationProvider customAuthenticationProvider;
 
+//     private final CustomAuthenticationProvider customAuthenticationProvider;
 
     @PostConstruct
     public void init() {
@@ -60,15 +58,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return getBCryptPasswordEncoder();
     }
+
     @Bean
     @Primary
-    public BCryptPasswordEncoder getBCryptPasswordEncoder() { return new BCryptPasswordEncoder();
+    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -96,11 +97,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(customBasicAuthenticationEntryPoint)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/rest-person/**").hasAuthority("ADMIN")
+                .antMatchers("/api/**").authenticated()
                 .anyRequest()
                 .authenticated()
+//                .and()
+//                .formLogin()
         ;
-
 
     }
 

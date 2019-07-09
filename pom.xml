@@ -45,6 +45,19 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+        <!--SpringFox dependencies -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -84,5 +97,16 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+	<plugins>
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-compiler-plugin</artifactId>
+		    <configuration>
+			<source>1.6</source>
+			<target>1.6</target>
+		    </configuration>
+		</plugin>
+	</plugins>
+	
 
 </project>

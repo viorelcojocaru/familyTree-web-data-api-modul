@@ -3,6 +3,7 @@ package com.esempla.familyTree.familyTreewebstarter.web;
 //import com.esempla.familyTree.familyTreeapi.controller.ResourceNotFoundException;
 
 import com.esempla.familyTree.familyTreecommonutils.constants.AppAccountTypes;
+import com.esempla.familyTree.familyTreecommonutils.constants.Genders;
 import com.esempla.familyTree.familyTreecommonutils.constants.Pages;
 import com.esempla.familyTree.familyTreedata.BC.AccountBC;
 import com.esempla.familyTree.familyTreedata.domain.*;
@@ -75,7 +76,7 @@ public class PersonController {
         return modelAndView;
     }
 
-    /*  @PostMapping(value = "/editPerson/save")
+      @PostMapping(value = "/editPerson/save")
       public ModelAndView save(@Valid Person person, @RequestParam Long sourceId , @RequestParam Long typeId , BindingResult bindingResult, ModelAndView modelAndView) {
           System.out.println(modelAndView.getModel().get("sourceId")); //, Long sourceId
           System.out.println(sourceId); //, Long sourceId
@@ -83,7 +84,7 @@ public class PersonController {
           System.out.println(typeId) ;//,  Long typeId
           personService.saveOrUpdate(person);
           System.out.println(person);
-          *//*if ( false) {
+          if ( false) {
             AppAccount currentAppAcc = accountBC.createAppAccount(person, appAccountTypeService.getById(typeId));
             appAccountService.saveOrUpdate(currentAppAcc);
             AppAccount appAccountFrom = null;
@@ -101,19 +102,19 @@ public class PersonController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }*//*
+        }
         modelAndView.addObject("person", person);
         modelAndView.setViewName("redirect:/viewPerson/id/" + person.getId());
         return modelAndView;
     }
-*/
+
     @PostMapping(value = "/editPerson/id/{id}")
     public ModelAndView savePerson(@Valid Person person, BindingResult bindingResult, ModelAndView modelAndView) {
 
-        // personService.saveOrUpdate(person);
+         personService.saveOrUpdate(person);
 //        System.out.println(sourceId);
 //        System.out.println(typeId);
-        /*if ( false) {
+        if ( false) {
             AppAccount currentAppAcc = accountBC.createAppAccount(person, appAccountTypeService.getById(typeId));
             appAccountService.saveOrUpdate(currentAppAcc);
             AppAccount appAccountFrom = null;
@@ -131,22 +132,25 @@ public class PersonController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }*/
+        }
         System.out.println(this.typeId);
         System.out.println(this.sourceId);
-        if (this.typeId == AppAccountTypes.CILD)
-            System.out.println("CILD");
-        if (this.typeId == AppAccountTypes.EX_PARTNER)
-            System.out.println("EX_PARTNER");
-        if (this.typeId == AppAccountTypes.PARTNER)
-            System.out.println("PARTNER");
-        if (this.typeId == AppAccountTypes.HUSBAND)
-            System.out.println("HUSBAND");
-        if (this.typeId == AppAccountTypes.WIFE)
-            System.out.println("WIFE");
+        if (typeId!=null && sourceId!=null){
+            if (this.typeId == AppAccountTypes.CILD)
+                System.out.println("CILD");
+            if (this.typeId == AppAccountTypes.EX_PARTNER)
+                System.out.println("EX_PARTNER");
+            if (this.typeId == AppAccountTypes.PARTNER)
+                System.out.println("PARTNER");
+            if (this.typeId == AppAccountTypes.HUSBAND)
+                System.out.println("HUSBAND");
+            if (this.typeId == AppAccountTypes.WIFE)
+                System.out.println("WIFE");
 
-        this.typeId=null;
-        this.sourceId=null;
+            this.typeId=null;
+            this.sourceId=null;
+        }
+
         modelAndView.addObject("person", person);
         modelAndView.setViewName("redirect:/viewPerson/id/" + person.getId());
         return modelAndView;
@@ -225,4 +229,5 @@ public class PersonController {
 
         return modelAndView;
     }
+
 }

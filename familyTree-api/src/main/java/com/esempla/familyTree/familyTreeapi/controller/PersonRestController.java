@@ -1,7 +1,7 @@
 package com.esempla.familyTree.familyTreeapi.controller;
 
-import com.esempla.familyTree.familyTreedata.domain.*;
-
+import com.esempla.familyTree.familyTreedata.domain.Person;
+import com.esempla.familyTree.familyTreedata.domain.PersonDto;
 import com.esempla.familyTree.familyTreedata.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/rest-person")
+@RequestMapping(value = "/api/person")
 @Slf4j
 @RequiredArgsConstructor
 public class PersonRestController {
@@ -37,26 +37,26 @@ public class PersonRestController {
     @ResponseBody
     public PersonDto getPerson(@PathVariable("id") Long id) {
         Person person = personService.getById(id);
-        if (person == null)  new ResourceNotFoundException("No get found with id=" + id);
+        if (person == null) new ResourceNotFoundException("No get found with id=" + id);
         return convertToDto(person);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/create")
     public PersonDto create(@RequestBody PersonDto personDto) throws ParseException {
-        Person person =convertToEntity(personDto);
-        Person personCreated=personService.saveOrUpdate(person);
-        return convertToDto( personCreated );
+        Person person = convertToEntity(personDto);
+        Person personCreated = personService.saveOrUpdate(person);
+        return convertToDto(personCreated);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public PersonDto updatePost(@RequestBody
-            PersonDto personDto) throws ParseException {
+                                        PersonDto personDto) throws ParseException {
         if (!personService.existEntry(personDto.getId()))
             new ResourceNotFoundException("No post found with id=" + personDto.getId());
-        Person person=convertToEntity(personDto);
-        Person personUpdated=personService.saveOrUpdate(person);
+        Person person = convertToEntity(personDto);
+        Person personUpdated = personService.saveOrUpdate(person);
         return convertToDto(personUpdated);
     }
 
@@ -67,14 +67,15 @@ public class PersonRestController {
     }
 
     private PersonDto convertToDto(Person person) {
-
         PersonDto personDto = modelMapper.map(person, PersonDto.class);
         return personDto;
     }
-    private Person convertToEntity(PersonDto personDto) throws ParseException {
 
+    private Person convertToEntity(PersonDto personDto) throws ParseException {
         Person person = modelMapper.map(personDto, Person.class);
         return person;
     }
+
+
 
 }
